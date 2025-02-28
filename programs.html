@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChainEcho - Programs</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.8), rgba(26, 26, 26, 0.8)), url('./11.webp'); /* Add this line */
+            background-size: cover; /* Ensure the image covers the entire background */
+            background-position: center; /* Center the background image */
+            background-attachment: fixed; /* Fix the background image */
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Section */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: linear-gradient(150deg, #090a0a, #430348);
+        }
+
+        .logo h1 {
+            font-size: 45px;
+            font-weight: bold;
+            margin: 0;
+            color: #ffffff;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: right;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff0000;
+        }
+
+        .cta-buttons {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .btn-login, .btn-join {
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            margin-left: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-login {
+            background-color: #ff0000;
+            color: white;
+        }
+
+        .btn-login:hover {
+            background-color: #cc0000;
+        }
+
+        .btn-join {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-join:hover {
+            background-color: white;
+            color: #0a0a0a;
+        }
+
+        /* Programs Content Section */
+        .programs-content {
+            text-align: center;
+            padding: 100px 50px;
+        }
+
+        .programs-content h2 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .programs-content p {
+            font-size: 18px;
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        /* Course Cards Section */
+        .course-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 0 50px 100px 50px;
+            flex-wrap: wrap;
+        }
+
+        .course-card {
+            background-color: rgba(1, 14, 27, 0.8); /* Add transparency for better readability */
+            border-radius: 10px;
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 10px 20px rgba(225, 21, 21, 0.3);
+        }
+
+        .course-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .course-card h3 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .course-card p {
+            font-size: 16px;
+            color: #cccccc;
+            margin-bottom: 20px;
+        }
+
+        .course-card .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #f5ebeb;
+            margin-bottom: 20px;
+        }
+
+        .course-card button {
+            background-color: #e94747;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .course-card button:hover {
+            background-color: #cc0000;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: rgba(10, 10, 10, 0.8); /* Add transparency for better readability */
+            padding: 20px 50px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+            color: #cccccc;
+        }
+
+        footer a {
+            color: #ff0000;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Floating Chat Button */
+        .chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #f7f0f0;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s;
+            z-index: 100;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+        }
+
+        .chat-button img {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Chat Popup */
+        .chat-popup {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            background-color: #174c68;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(108, 171, 238, 0.3);
+            display: none;
+            flex-direction: column;
+            z-index: 100;
+        }
+
+        .chat-popup.active {
+            display: flex;
+        }
+
+        /* Chat Header */
+        .chat-header {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chat-header h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .online-status {
+            margin: 5px 0 0;
+            font-size: 12px;
+            color: #cccccc;
+            display: flex;
+            align-items: center;
+        }
+
+        .online-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00ff00;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        /* Chat Body */
+        .chat-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            max-height: 300px;
+        }
+
+        .chat-body .message {
+            background-color: none;
+            padding: 8px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .chat-messages {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message {
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 80%;
+            font-size: 14px;
+        }
+
+        .message.sent {
+            background-color: #258fda;
+            align-self: flex-end;
+        }
+
+        .message.received {
+            background-color: #46bdde;
+            align-self: flex-start;
+        }
+
+        /* Chat Footer */
+        .chat-footer {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chat-footer input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            background-color: #e7f0f4;
+            color: rgb(28, 23, 23);
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        .chat-footer button {
+            background-color: #ff0000;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .chat-footer button:hover {
+            background-color: #cc0000;
+        }
+
+        .file-upload {
+            position: relative;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        .file-upload i {
+            font-size: 18px;
+            color: #cccccc;
+            transition: color 0.3s;
+        }
+
+        .file-upload i:hover {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="./8.webp">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="solutions.html">Solutions</a></li>
+                <li><a href="vision.html">Vision</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="more.html">More</a></li>
+            </ul>
+        </nav>
+        <div class="cta-buttons">
+            <a href="#" class="btn-login">Log In</a>
+            <a href="#" class="btn-join">Join Now</a>
+        </div>
+    </header>
+
+    <!-- Programs Content Section -->
+    <section class="programs-content">
+        <h2>Data Analysis Programs</h2>
+        <p>Explore our programs designed to help businesses and individuals leverage blockchain technology for growth and innovation.</p>
+    </section>
+
+    <!-- Course Cards Section -->
+    <section class="course-grid">
+        <div class="course-card">
+            <img src="./1.webp" alt="Blockchain Insights">
+            <h3>Blockchain Insights for Educators and Investors</h3>
+            <p>Coming Soon</p>
+            <p class="price">₹50.00</p>
+            <button>View Details</button>
+        </div>
+        <div class="course-card">
+            <img src="./2.jpg" alt="Cloud Analytics">
+            <h3>Cloud Analytics For Beginners</h3>
+            <p>2 Weeks</p>
+            <p class="price">₹80.00</p>
+            <button>View Details</button>
+        </div>
+        <div class="course-card">
+            <img src="./3.jpg" alt="Data Analytics Tools">
+            <h3>Data Analytics Tools</h3>
+            <p>4 Weeks</p>
+            <p class="price">₹120.00</p>
+            <button>View Details</button>
+        </div>
+        <div class="course-card">
+            <img src="./4.jpg" alt="Data-driven Decision Making">
+            <h3>Data-driven Decision Making</h3>
+            <p>8 Weeks</p>
+            <p class="price">₹150.00</p>
+            <button>View Details</button>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2023 ChainEcho. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+    <!-- Floating Chat Button -->
+    <div class="chat-button" id="chatButton">
+        <img src="./asset/images.png" alt="Chat">
+    </div>
+
+    <!-- Chat Popup -->
+    <div class="chat-popup" id="chatPopup">
+        <div class="chat-header">
+            <h3>Support Service</h3>
+            <p class="online-status"><span class="online-dot"></span> Online</p>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="message">Welcome to ChainEcho! How can we assist you today?</div>
+        </div>
+        <div class="chat-body">
+            <div class="chat-messages">
+                <!-- Chat messages will appear here -->
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="Type a message...">
+            <label for="fileInput" class="file-upload">
+                <i class="fas fa-paperclip"></i>
+                <input type="file" id="fileInput">
+            </label>
+            <button id="sendButton"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- JavaScript for Chat Functionality -->
+    <script>
+        // Toggle Chat Popup
+        const chatButton = document.getElementById('chatButton');
+        const chatPopup = document.getElementById('chatPopup');
+
+        chatButton.addEventListener('click', () => {
+            chatPopup.classList.toggle('active');
+        });
+
+        // Send Message
+        const chatInput = document.getElementById('chatInput');
+        const sendButton = document.getElementById('sendButton');
+        const chatMessages = document.querySelector('.chat-messages');
+
+        sendButton.addEventListener('click', () => {
+            const message = chatInput.value.trim();
+            if (message !== "") {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', 'sent');
+                messageElement.textContent = message;
+                chatMessages.appendChild(messageElement);
+                chatInput.value = "";
+                chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to bottom
+            }
+        });
+
+        // Send Message on Enter Key
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendButton.click();
+            }
+        });
+    </script>
+</body>
+</html>

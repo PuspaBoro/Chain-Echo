@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChainEcho - Members</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            color: #ffffff;
+            background-image: url('./11.webp'); /* Add this line */
+            background-size: cover; /* Ensure the image covers the entire background */
+            background-position: center; /* Center the background image */
+            background-attachment: fixed; /* Fix the background image */
+        }
+
+        a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color:none;
+        }
+
+        .logo img {
+            height: 60px; /* Adjusted logo size */
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: rgb(245, 245, 251);
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff0000;
+        }
+
+        .cta-buttons {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .btn-login, .btn-join {
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            margin-left: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-login {
+            background-color: #ff0000;
+            color: white;
+        }
+
+        .btn-login:hover {
+            background-color: #cc0000;
+        }
+
+        .btn-join {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-join:hover {
+            background-color: white;
+            color: #0a0a0a;
+        }
+
+        /* Main Content */
+        .main-container {
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+        }
+
+        .search-filter {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-filter input {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 200px;
+            background-color: #d9ecf2;
+            color: #ffffff;
+        }
+
+        .search-filter select {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #042f41;
+            color: #ffffff;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .profile-card {
+            background: linear-gradient(170deg, #75016f, #0c3484);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            width: 180px; /* Fixed width for compact size */
+            transition: transform 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: scale(1.05); /* Hover effect */
+            box-shadow: 0 10px 20px rgba(20, 226, 240, 0.3);
+        }
+
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            cursor: pointer; /* Indicates the image is clickable */
+        }
+
+        .role {
+            color: #c0280a;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* Popup Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Fixed rgba syntax */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .modal-content img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #ec1d1d;
+            font-size: 24px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #040404;
+            padding: 50px 20px;
+            position: relative;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        /* Brand & Contact Section */
+        .brand-contact .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #f32222;
+            margin-bottom: 15px;
+        }
+
+        .brand-contact .footer-email,
+        .brand-contact .footer-address {
+            font-size: 14px;
+            color: #cccccc;
+            margin: 5px 0;
+        }
+
+        /* Navigation Section */
+        .navigation .footer-heading {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .navigation .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navigation .footer-links li {
+            margin: 10px 0;
+        }
+
+        .navigation .footer-links li a {
+            color: #cccccc;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+            cursor: pointer; /* Add cursor pointer for better UX */
+        }
+
+        .navigation .footer-links li a:hover {
+            color: #ff0000;
+        }
+
+        .btn-community {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #f93131;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-community:hover {
+            background-color: #cc0000;
+        }
+
+        /* Subscription Section */
+        .subscription .footer-heading {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .subscription-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .subscription-form input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            background-color: #0a0a0a;
+            color: white;
+            font-size: 14px;
+        }
+
+        .subscription-form button {
+            padding: 10px 15px;
+            background-color: #ea3c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .subscription-form button:hover {
+            background-color: #cc0000;
+        }
+
+        /* Social & Copyright Section */
+        .social-copyright .footer-heading {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons .social-icon {
+            color: #cccccc;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-icons .social-icon:hover {
+            color: #ff0000;
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: #cccccc;
+            margin-top: 20px;
+        }
+
+        /* Floating Chat Button */
+        .chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #f7f0f0;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s;
+            z-index: 100;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+        }
+
+        .chat-button img {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Chat Popup */
+        .chat-popup {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            background-color: #174c68;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(108, 171, 238, 0.3);
+            display: none;
+            flex-direction: column;
+            z-index: 100;
+        }
+
+        .chat-popup.active {
+            display: flex;
+        }
+
+        /* Chat Header */
+        .chat-header {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chat-header h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .online-status {
+            margin: 5px 0 0;
+            font-size: 12px;
+            color: #cccccc;
+            display: flex;
+            align-items: center;
+        }
+
+        .online-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00ff00;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        /* Chat Body */
+        .chat-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            max-height: 300px;
+        }
+
+        .chat-body .message {
+            background-color: none;
+            padding: 8px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .chat-messages {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message {
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 80%;
+            font-size: 14px;
+        }
+
+        .message.sent {
+            background-color: #258fda;
+            align-self: flex-end;
+        }
+
+        .message.received {
+            background-color: #46bdde;
+            align-self: flex-start;
+        }
+
+        /* Chat Footer */
+        .chat-footer {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chat-footer input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            background-color: #e7f0f4;
+            color: rgb(28, 23, 23);
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        .chat-footer button {
+            background-color: #ff0000;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .chat-footer button:hover {
+            background-color: #cc0000;
+        }
+
+        .file-upload {
+            position: relative;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        .file-upload i {
+            font-size: 18px;
+            color: #cccccc;
+            transition: color 0.3s;
+        }
+
+        .file-upload i:hover {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="./8.webp" alt="ChainEcho Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="solutions.html">Solutions</a></li>
+                <li><a href="vision.html">Vision</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="more.html">More</a></li>
+            </ul>
+        </nav>
+        <div class="cta-buttons">
+            <a href="#" class="btn-login">Log In</a>
+            <a href="#" class="btn-join">Join Now</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="main-container">
+            <h1>All Members</h1>
+            <div class="search-filter">
+                <input type="text" placeholder="Search...">
+                <select id="role-filter">
+                    <option value="all">All</option>
+                    <option value="member">Member</option>
+                    <option value="admin">Admin</option>
+                    <option value="mentor">Mentor</option>
+                </select>
+            </div>
+            <div class="profile-grid"> 
+                <div class="profile-card">
+                    <img src="./asset/13.jpg" alt="Profile Picture" class="profile-pic" onclick="openModal('asset/13.jpg')">
+                    <h2>Puspa Boro</h2>
+                    <p class="role">Founder</p>
+                </div>
+                <div class="profile-card">
+                    <img src="./asset/11.jpg" alt="Profile Picture" class="profile-pic" onclick="openModal('asset/11.jpg')">
+                    <h2>BITCOIN</h2>
+                    <p class="role">Mentor</p>
+                </div>
+                <div class="profile-card">
+                    <img src="./asset/12.jpg" alt="Profile Picture" class="profile-pic" onclick="openModal('asset/12.jpg')">
+                    <h2>HERUM</h2>
+                    <p class="role">Admin</p>
+                </div>
+                <div class="profile-card">
+                    <img src="./asset/14.jpg" alt="Profile Picture" class="profile-pic" onclick="openModal('asset/14.jpg')">
+                    <h2>ILXLY</h2>
+                    <p class="role">Member</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Popup Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Full Image">
+            <div class="close" onclick="closeModal()">×</div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section brand-contact">
+                <div class="logo">
+                    <img src="./8.webp">
+                </div>
+                <p class="footer-email">contact@chainecho.com</p>
+                <p class="footer-address">Jayanagar, Beltola Road, Assam, Guwahati, 781028</p>
+            </div>
+            <div class="footer-section navigation">
+                <h3 class="footer-heading">Explore</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="vision.html">Vision</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="more.html">More</a></li>
+                </ul>
+                <a href="#" class="btn-community">Join the Community</a>
+            </div>
+            <div class="footer-section subscription">
+                <h3 class="footer-heading">Stay Updated with ChainEcho</h3>
+                <form class="subscription-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+            <div class="footer-section social-copyright">
+                <h3 class="footer-heading">Follow Us On:</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                </div>
+                <p class="copyright">© 2025 by ChainEcho. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Chat Button -->
+    <div class="chat-button" id="chatButton">
+        <img src="./asset/images.png" alt="Chat">
+    </div>
+
+    <!-- Chat Popup -->
+    <div class="chat-popup" id="chatPopup">
+        <div class="chat-header">
+            <h3>Support Service</h3>
+            <p class="online-status"><span class="online-dot"></span> Online</p>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="message">Welcome to ChainEcho! How can we assist you today?</div>
+        <div class="chat-body">
+            <div class="chat-messages">
+                <!-- Chat messages will appear here -->
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="Type a message...">
+            <label for="fileInput" class="file-upload">
+                <i class="fas fa-paperclip"></i>
+                <input type="file" id="fileInput">
+            </label>
+            <button id="sendButton"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- JavaScript for Popup and Chat Functionality -->
+    <script>
+        // Popup Functionality
+        function openModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = imageSrc;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+        }
+
+        // Chat Functionality
+        const chatButton = document.getElementById('chatButton');
+        const chatPopup = document.getElementById('chatPopup');
+        const sendButton = document.getElementById('sendButton');
+        const chatInput = document.getElementById('chatInput');
+        const chatMessages = document.querySelector('.chat-messages');
+
+        // Toggle Chat Popup
+        chatButton.addEventListener('click', () => {
+            chatPopup.classList.toggle('active');
+        });
+
+        // Send Message
+        sendButton.addEventListener('click', () => {
+            const message = chatInput.value.trim();
+            if (message !== "") {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', 'sent');
+                messageElement.textContent = message;
+                chatMessages.appendChild(messageElement);
+                chatInput.value = "";
+                chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to bottom
+            }
+        });
+
+        // Send Message on Enter Key
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendButton.click();
+            }
+        });
+    </script>
+</body>
+</html>

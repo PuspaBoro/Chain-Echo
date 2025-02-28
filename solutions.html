@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChainEcho - Solutions</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Additional CSS for the Solutions Page */
+        .solutions-hero {
+            padding: 100px 30px;
+            background-color: #030303;
+            color: white;
+            background-image: url('./7.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .solutions-hero h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+/* Header Section */
+header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: linear-gradient(100deg, #090a0a, #373a5d);
+        }
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            padding: 50px;
+            background-color: #05111e;
+        }
+
+        .solution-card {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 8px 20px rgba(68, 158, 248, 0.5);
+        }
+
+        .solution-icon {
+            width: 60px;
+            height: 60px;
+            margin-right: 20px;
+            background-color: #00a8ff; /* Blue */
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .solution-icon.red {
+            background-color: #ff0000; /* Red */
+        }
+
+        .solution-content h3 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .solution-content p {
+            font-size: 16px;
+            color: #cccccc;
+        }
+
+        .bottom-section {
+            display: flex;
+            align-items: center;
+            padding: 100px 50px;
+            background-color: #010c1b;
+        }
+
+        .bottom-image {
+            flex: 1;
+            background: linear-gradient(135deg, #0e64c5, #ff0000);
+            height: 300px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .bottom-text {
+            flex: 1;
+            padding-left: 50px;
+        }
+
+        .bottom-text p {
+            font-size: 18px;
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        /* Floating Chat Button */
+        .chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #f7f0f0;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s;
+            z-index: 100;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+        }
+
+        .chat-button img {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Chat Popup */
+        .chat-popup {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            background-color: #174c68;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(108, 171, 238, 0.3);
+            display: none;
+            flex-direction: column;
+            z-index: 100;
+        }
+
+        .chat-popup.active {
+            display: flex;
+        }
+
+        /* Chat Header */
+        .chat-header {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chat-header h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .online-status {
+            margin: 5px 0 0;
+            font-size: 12px;
+            color: #cccccc;
+            display: flex;
+            align-items: center;
+        }
+
+        .online-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00ff00;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        /* Chat Body */
+        .chat-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            max-height: 300px;
+        }
+
+.chat-body .message {
+    background-color: none;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+        .chat-messages {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message {
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 80%;
+            font-size: 14px;
+        }
+
+        .message.sent {
+            background-color: #258fda;
+            align-self: flex-end;
+        }
+
+        .message.received {
+            background-color: #46bdde;
+            align-self: flex-start;
+        }
+
+        /* Chat Footer */
+        .chat-footer {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chat-footer input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            background-color: #e7f0f4;
+            color: rgb(28, 23, 23);
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        .chat-footer button {
+            background-color: #ff0000;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .chat-footer button:hover {
+            background-color: #cc0000;
+        }
+
+        .file-upload {
+            position: relative;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        .file-upload i {
+            font-size: 18px;
+            color: #cccccc;
+            transition: color 0.3s;
+        }
+
+        .file-upload i:hover {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="./8.webp">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="solutions.html">Solutions</a></li>
+                <li><a href="vision.html">Vision</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li class="dropdown">
+                    <a href="more.html">More</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="more.html#event">Event</a></li>
+                        <li><a href="more.html#member">Member</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="cta-buttons">
+            <a href="#" class="btn-login">Log In</a>
+            <a href="#" class="btn-join">Join Now</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="solutions-hero">
+        <h1>Welcome to ChainEcho - Your Blockchain Meetup Destination</h1>
+    </section>
+
+    <!-- Grid Content Sections -->
+    <section class="solutions-grid">
+        <!-- Blockchain Resources -->
+        <div class="solution-card">
+            <div class="solution-icon">
+                <i class="fas fa-cube"></i>
+            </div>
+            <div class="solution-content">
+                <h3>Blockchain Resources</h3>
+                <p>Discover our comprehensive blockchain resources designed to help you stay ahead in the industry.</p>
+            </div>
+        </div>
+
+        <!-- Investor Mentors -->
+        <div class="solution-card">
+            <div class="solution-icon red">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="solution-content">
+                <h3>Investor Mentors</h3>
+                <p>Connect with experienced investor mentors who can guide you through your blockchain journey.</p>
+            </div>
+        </div>
+
+        <!-- Industry Committees -->
+        <div class="solution-card">
+            <div class="solution-icon">
+                <i class="fas fa-building"></i>
+            </div>
+            <div class="solution-content">
+                <h3>Industry Committees</h3>
+                <p>Join industry committees to collaborate and shape the future of blockchain technology.</p>
+            </div>
+        </div>
+
+        <!-- Upcoming Events -->
+        <div class="solution-card">
+            <div class="solution-icon red">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <div class="solution-content">
+                <h3>Upcoming Events</h3>
+                <p>Stay updated with our upcoming blockchain events and networking opportunities.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Section -->
+    <section class="bottom-section">
+        <div class="bottom-image">
+            Connect with Industry Experts
+        </div>
+        <div class="bottom-text">
+            <p>A thriving community dedicated to blockchain technology and its applications. Join us for networking, learning, and collaboration.</p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Brand & Contact Section -->
+            <div class="footer-section brand-contact">
+                <div class="logo">
+                    <img src="./8.webp">
+                </div>
+                <p class="footer-email">contact@chainecho.com</p>
+                <p class="footer-address">Jayanagar, Beltola Road, Assam, Guwahati, 781028</p>
+            </div>
+
+            <!-- Navigation Section -->
+            <div class="footer-section navigation">
+                <h3 class="footer-heading">Explore</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="vision.html">Vision</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="more.html">More</a></li>
+                </ul>
+                <a href="#" class="btn-community">Join the Community</a>
+            </div>
+
+            <!-- Subscription Section -->
+            <div class="footer-section subscription">
+                <h3 class="footer-heading">Stay Updated with ChainEcho</h3>
+                <form class="subscription-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <!-- Social & Copyright Section -->
+            <div class="footer-section social-copyright">
+                <h3 class="footer-heading">Follow Us On:</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                </div>
+                <p class="copyright">© 2025 by ChainEcho. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Chat Button -->
+    <div class="chat-button" id="chatButton">
+        <img src="./asset/images.png" alt="Chat">
+    </div>
+
+    <!-- Chat Popup -->
+    <div class="chat-popup" id="chatPopup">
+        <div class="chat-header">
+            <h3>Support Service</h3>
+            <p class="online-status"><span class="online-dot"></span> Online</p>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="message">Welcome to ChainEcho! How can we assist you today?</div>
+        </div>
+        <div class="chat-body">
+            <div class="chat-messages">
+                <!-- Chat messages will appear here -->
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="Type a message...">
+            <label for="fileInput" class="file-upload">
+                <i class="fas fa-paperclip"></i>
+                <input type="file" id="fileInput">
+            </label>
+            <button id="sendButton"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- JavaScript for Chat Functionality -->
+    <script>
+        // Toggle Chat Popup
+        const chatButton = document.getElementById('chatButton');
+        const chatPopup = document.getElementById('chatPopup');
+
+        chatButton.addEventListener('click', () => {
+            chatPopup.classList.toggle('active');
+        });
+
+        // Send Message
+        const chatInput = document.getElementById('chatInput');
+        const sendButton = document.getElementById('sendButton');
+        const chatMessages = document.querySelector('.chat-messages');
+
+        sendButton.addEventListener('click', () => {
+            const message = chatInput.value.trim();
+            if (message !== "") {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', 'sent');
+                messageElement.textContent = message;
+                chatMessages.appendChild(messageElement);
+                chatInput.value = "";
+                chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to bottom
+            }
+        });
+
+        // Send Message on Enter Key
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendButton.click();
+            }
+        });
+    </script>
+</body>
+</html>

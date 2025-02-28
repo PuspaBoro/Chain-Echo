@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listing - ChainEcho</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        a {
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color:none;
+        }
+
+        .logo img {
+            height: 60px; /* Adjusted logo size */
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff0000;
+        }
+
+       /* CTA Buttons */
+.cta-buttons {
+    display: flex;
+    align-items: center;
+    margin-left: 20px; /* Add space between nav and buttons */
+}
+
+.btn-login, .btn-join {
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-login {
+    background-color: #b80a0a;
+    color: rgb(230, 212, 212);
+}
+
+.btn-login:hover {
+    background-color: #f75f5f;
+}
+
+.btn-join {
+    border: 2px solid white;
+    color: white;
+}
+
+.btn-join:hover {
+    background-color: white;
+    color: #0a0a0a;
+}
+
+        /* Event Grid Section */
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .event-card {
+            background-color: #070116;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 8px 16px rgba(246, 2, 2, 0.3);
+        }
+
+        .event-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .event-info {
+            padding: 1.5rem;
+        }
+
+        .event-info h3 {
+            margin: 0 0 1rem;
+            font-size: 1.5rem;
+        }
+
+        .event-info p {
+            margin: 0 0 1rem;
+            font-size: 1rem;
+            color: #cccccc;
+        }
+
+        .event-info .date {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .event-info .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: #007bff;
+            border-radius: 5px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .event-info .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #02031c;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            color: rgb(244, 68, 68);
+            width: 30%;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            height: 40px; /* Adjusted logo size */
+            margin-bottom: 10px;
+        }
+
+        .footer-email,
+        .footer-address {
+            font-size: 14px;
+            color: #cccccc;
+            margin: 5px 0;
+        }
+
+        .footer-heading {
+            font-size: 18px;
+            margin: 0 0 10px;
+            color: #ffffff;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin: 5px 0;
+        }
+
+        .btn-community {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #de4545; /* Red background */
+            border-radius: 5px;
+            margin-top: 10px;
+            color: #ffffff;
+        }
+
+        .subscription-form {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .subscription-form input {
+            padding: 10px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            width: 40%;
+        }
+
+        .subscription-form button {
+            padding: 10px 20px;
+            background-color: #e84c4c; /* Red background */
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            color: #ffffff;
+        }
+
+        .social-icons {
+            margin: 10px 0;
+        }
+
+        .social-icons a {
+            font-size: 24px;
+            margin: 0 10px;
+            color: #ffffff;
+        }
+
+        .copyright {
+            font-size: 12px;
+            color: #888888;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .event-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="./8.webp" alt="ChainEcho Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="solutions.html">Solutions</a></li>
+                <li><a href="vision.html">Vision</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="more.html">More</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Event Grid Section -->
+    <section class="event-grid">
+        <!-- Event 1 -->
+        <div class="event-card">
+            <img src="./asset/z.jpg" alt="Event 1 Image">
+            <div class="event-info">
+                <h3>Blockchain Conference 2023</h3>
+                <p class="date">October 15, 2023 | 10:00 AM</p>
+                <p>Join us for the largest blockchain conference of the year, featuring industry leaders and innovative technologies.</p>
+                <a href="#" class="btn">Register Now</a>
+            </div>
+        </div>
+
+        <!-- Event 2 -->
+        <div class="event-card">
+            <img src="./asset/x.jpg" alt="Event 2 Image">
+            <div class="event-info">
+                <h3>Web3 Workshop</h3>
+                <p class="date">November 5, 2023 | 2:00 PM</p>
+                <p>Learn the fundamentals of Web3 and how to build decentralized applications in this hands-on workshop.</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Event 3 -->
+        <div class="event-card">
+            <img src="./asset/y.jpg" alt="Event 3 Image">
+            <div class="event-info">
+                <h3>Crypto Investment Seminar</h3>
+                <p class="date">December 10, 2023 | 9:00 AM</p>
+                <p>Discover the latest trends in cryptocurrency investments and strategies for maximizing returns.</p>
+                <a href="#" class="btn">Register Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="logo">
+            <img src="./8.webp">
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+        <div class="contact-info">
+            <p>Contact us at <a href="mailto:contact@chainecho.com">contact@chainecho.com</a></p>
+            <p>Jayanagar, Beltola Road, Assam, Guwahati, 781028</p>
+        </div>
+        <p class="copyright">© 2025 by ChainEcho. All rights reserved.</p>
+    </footer>
+</body>
+</html>
