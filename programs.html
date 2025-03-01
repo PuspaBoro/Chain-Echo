@@ -11,10 +11,10 @@
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, rgba(10, 10, 10, 0.8), rgba(26, 26, 26, 0.8)), url('./11.webp'); /* Add this line */
-            background-size: cover; /* Ensure the image covers the entire background */
-            background-position: center; /* Center the background image */
-            background-attachment: fixed; /* Fix the background image */
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.8), rgba(26, 26, 26, 0.8)), url('./11.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: white;
             min-height: 100vh;
             display: flex;
@@ -98,6 +98,21 @@
         .programs-content {
             text-align: center;
             padding: 100px 50px;
+            opacity: 0; /* Start invisible */
+            transform: translateY(20px); /* Start slightly below */
+            animation: fadeInUp 1s ease-in-out forwards; /* Smooth pop-up animation */
+            animation-delay: 0.3s; /* Delay for a smoother effect */
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .programs-content h2 {
@@ -119,10 +134,14 @@
             gap: 20px;
             padding: 0 50px 100px 50px;
             flex-wrap: wrap;
+            opacity: 0; /* Start invisible */
+            transform: translateY(20px); /* Start slightly below */
+            animation: fadeInUp 1s ease-in-out forwards; /* Smooth pop-up animation */
+            animation-delay: 0.6s; /* Delay for a smoother effect */
         }
 
         .course-card {
-            background-color: rgba(1, 14, 27, 0.8); /* Add transparency for better readability */
+            background-color: rgba(1, 14, 27, 0.8);
             border-radius: 10px;
             width: 300px;
             padding: 20px;
@@ -178,10 +197,14 @@
 
         /* Footer Section */
         footer {
-            background-color: rgba(10, 10, 10, 0.8); /* Add transparency for better readability */
+            background-color: rgba(10, 10, 10, 0.8);
             padding: 20px 50px;
             text-align: center;
             margin-top: auto;
+            opacity: 0; /* Start invisible */
+            transform: translateY(20px); /* Start slightly below */
+            animation: fadeInUp 1s ease-in-out forwards; /* Smooth pop-up animation */
+            animation-delay: 0.9s; /* Delay for a smoother effect */
         }
 
         footer p {
@@ -424,7 +447,7 @@
 
     <!-- Footer Section -->
     <footer>
-        <p>&copy; 2023 ChainEcho. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        <p>&copy; 2025 ChainEcho. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
     </footer>
 
     <!-- Floating Chat Button -->
