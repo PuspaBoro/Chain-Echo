@@ -16,21 +16,36 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            overflow: hidden;
         }
 
         .solutions-hero h1 {
             font-size: 48px;
             font-weight: bold;
             margin-bottom: 20px;
+            animation: slideInFromLeft 1.5s ease-out;
         }
-/* Header Section */
-header {
+
+        @keyframes slideInFromLeft {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Header Section */
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 50px;
             background: linear-gradient(100deg, #090a0a, #373a5d);
         }
+
         .solutions-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -47,11 +62,23 @@ header {
             border-radius: 10px;
             backdrop-filter: blur(10px);
             transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease-out;
         }
 
         .solution-card:hover {
             transform: translateY(-15px);
             box-shadow: 0 8px 20px rgba(68, 158, 248, 0.5);
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .solution-icon {
@@ -102,11 +129,33 @@ header {
             font-weight: bold;
             text-align: center;
             padding: 20px;
+            animation: slideInFromRight 1.5s ease-out;
+        }
+
+        @keyframes slideInFromRight {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
 
         .bottom-text {
             flex: 1;
             padding-left: 50px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
 
         .bottom-text p {
@@ -192,13 +241,13 @@ header {
             max-height: 300px;
         }
 
-.chat-body .message {
-    background-color: none;
-    padding: 8px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    font-size: 14px;
-}
+        .chat-body .message {
+            background-color: none;
+            padding: 8px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
 
         .chat-messages {
             display: flex;
