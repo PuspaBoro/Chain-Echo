@@ -16,19 +16,6 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            opacity: 0; /* Start with the page invisible */
-            animation: fadeIn 1s ease-in-out forwards; /* Smooth fade-in animation */
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.95); /* Slightly smaller at the start */
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1); /* Normal size at the end */
-            }
         }
 
         /* Header Section */
@@ -114,6 +101,21 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            opacity: 0; /* Start invisible */
+            transform: translateY(20px); /* Start slightly below */
+            animation: fadeInUp 1s ease-in-out forwards; /* Smooth pop-up animation */
+            animation-delay: 0.3s; /* Delay for a smoother effect */
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero h1 {
@@ -134,6 +136,10 @@
             align-items: center;
             padding: 100px 50px;
             background-color: #060120;
+            opacity: 0; /* Start invisible */
+            transform: translateY(20px); /* Start slightly below */
+            animation: fadeInUp 1s ease-in-out forwards; /* Smooth pop-up animation */
+            animation-delay: 0.6s; /* Delay for a smoother effect */
         }
 
         .our-story-visual {
@@ -172,6 +178,10 @@
             padding: 20px 50px;
             text-align: center;
             margin-top: auto;
+            opacity: 0; /* Start invisible */
+            transform: translateY(20px); /* Start slightly below */
+            animation: fadeInUp 1s ease-in-out forwards; /* Smooth pop-up animation */
+            animation-delay: 0.9s; /* Delay for a smoother effect */
         }
 
         footer p {
