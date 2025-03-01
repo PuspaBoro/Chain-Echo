@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,14 +31,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 50px;
-            background: none;
+            background: linear-gradient(100deg, #12012d, #36012f);
         }
-        header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    background: linear-gradient(100deg, #12012d, #36012f);}
 
         nav ul {
             list-style: none;
@@ -103,6 +97,21 @@
             background-size: cover;
             padding: 100px 20px;
             text-align: center;
+            opacity: 0; /* Start invisible */
+            transform: translateY(20px); /* Start slightly below */
+            animation: fadeInUp 1s ease-in-out forwards; /* Smooth pop-up animation */
+            animation-delay: 0.3s; /* Delay for a smoother effect */
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero h1 {
@@ -117,6 +126,10 @@
             display: flex;
             justify-content: space-around;
             padding: 50px 20px;
+            opacity: 0; /* Start invisible */
+            transform: translateY(20px); /* Start slightly below */
+            animation: fadeInUp 1s ease-in-out forwards; /* Smooth pop-up animation */
+            animation-delay: 0.6s; /* Delay for a smoother effect */
         }
 
         .blog-post {
@@ -217,149 +230,153 @@
         }
 
         /* Footer Styles */
-.footer {
-    background-color: #040404;
-    padding: 50px 20px;
-    position: relative;
-}
+        .footer {
+            background-color: #040404;
+            padding: 50px 20px;
+            position: relative;
+            opacity: 0; /* Start invisible */
+            transform: translateY(20px); /* Start slightly below */
+            animation: fadeInUp 1s ease-in-out forwards; /* Smooth pop-up animation */
+            animation-delay: 0.9s; /* Delay for a smoother effect */
+        }
 
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-}
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
 
-.footer-section {
-    flex: 1;
-    min-width: 200px;
-}
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
 
-/* Brand & Contact Section */
-.brand-contact .footer-logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #f32222;
-    margin-bottom: 15px;
-}
+        /* Brand & Contact Section */
+        .brand-contact .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #f32222;
+            margin-bottom: 15px;
+        }
 
-.brand-contact .footer-email,
-.brand-contact .footer-address {
-    font-size: 14px;
-    color: #cccccc;
-    margin: 5px 0;
-}
+        .brand-contact .footer-email,
+        .brand-contact .footer-address {
+            font-size: 14px;
+            color: #cccccc;
+            margin: 5px 0;
+        }
 
-/* Navigation Section */
-.navigation .footer-heading {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
+        /* Navigation Section */
+        .navigation .footer-heading {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
 
-.navigation .footer-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+        .navigation .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
-.navigation .footer-links li {
-    margin: 10px 0;
-}
+        .navigation .footer-links li {
+            margin: 10px 0;
+        }
 
-.navigation .footer-links li a {
-    color: #cccccc;
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.3s;
-    cursor: pointer; /* Add cursor pointer for better UX */
-}
+        .navigation .footer-links li a {
+            color: #cccccc;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+            cursor: pointer; /* Add cursor pointer for better UX */
+        }
 
-.navigation .footer-links li a:hover {
-    color: #ff0000;
-}
+        .navigation .footer-links li a:hover {
+            color: #ff0000;
+        }
 
-.btn-community {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #f93131;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 14px;
-    transition: background-color 0.3s;
-}
+        .btn-community {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #f93131;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
 
-.btn-community:hover {
-    background-color: #cc0000;
-}
+        .btn-community:hover {
+            background-color: #cc0000;
+        }
 
-/* Subscription Section */
-.subscription .footer-heading {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
+        /* Subscription Section */
+        .subscription .footer-heading {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
 
-.subscription-form {
-    display: flex;
-    gap: 10px;
-}
+        .subscription-form {
+            display: flex;
+            gap: 10px;
+        }
 
-.subscription-form input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-    background-color: #0a0a0a;
-    color: white;
-    font-size: 14px;
-}
+        .subscription-form input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            background-color: #0a0a0a;
+            color: white;
+            font-size: 14px;
+        }
 
-.subscription-form button {
-    padding: 10px 15px;
-    background-color: #ea3c3c;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 10px;
-    transition: background-color 0.3s;
-}
+        .subscription-form button {
+            padding: 10px 15px;
+            background-color: #ea3c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 10px;
+            transition: background-color 0.3s;
+        }
 
-.subscription-form button:hover {
-    background-color: #cc0000;
-}
+        .subscription-form button:hover {
+            background-color: #cc0000;
+        }
 
-/* Social & Copyright Section */
-.social-copyright .footer-heading {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
+        /* Social & Copyright Section */
+        .social-copyright .footer-heading {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
 
-.social-icons {
-    display: flex;
-    gap: 20px;
-}
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
 
-.social-icons .social-icon {
-    color: #cccccc;
-    font-size: 20px;
-    transition: color 0.3s;
-}
+        .social-icons .social-icon {
+            color: #cccccc;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
 
-.social-icons .social-icon:hover {
-    color: #ff0000;
-}
+        .social-icons .social-icon:hover {
+            color: #ff0000;
+        }
 
-.copyright {
-    font-size: 14px;
-    color: #cccccc;
-    margin-top: 20px;
-}
+        .copyright {
+            font-size: 14px;
+            color: #cccccc;
+            margin-top: 20px;
+        }
 
         /* Chat Icon */
         .chat-button {
@@ -472,7 +489,7 @@
     </div>
 
     <!-- Footer Section -->
-    <footer>
+    <footer class="footer">
         <div class="footer-container">
             <div class="footer-section brand-contact">
                 <div class="logo">
