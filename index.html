@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChainEcho | Home</title>
+    <title>ChainEcho|Home</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -154,7 +154,7 @@
                     <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
                 </div>
-                <p class="copyright">© 2024 by ChainEcho. All rights reserved.</p>
+                <p class="copyright">© 2025 by ChainEcho. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -173,6 +173,11 @@
         <div class="chat-body" id="chatBody">
             <div class="message">Welcome to ChainEcho! How can we assist you today?</div>
         </div>
+        <div class="chat-body">
+            <div class="chat-messages">
+                <!-- Chat messages will appear here -->
+            </div>
+        </div>
         <div class="chat-footer">
             <input type="text" id="chatInput" placeholder="Type a message...">
             <label for="fileInput" class="file-upload">
@@ -184,39 +189,7 @@
     </div>
 
     <!-- JavaScript for Chat Functionality -->
-    
-        <script>
-    // Function to check if an element is in the viewport
-    function isInViewport(element) {
-        const rect = element.getBoundingClientRect();
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-    }
-
-    // Function to handle scroll events
-    function handleScroll() {
-        const waveElement = document.querySelector('.wave');
-        const statsContainer = document.querySelector('.stats-container');
-
-        if (isInViewport(waveElement)) {
-            waveElement.classList.add('animate');
-        }
-
-        if (isInViewport(statsContainer)) {
-            statsContainer.classList.add('animate');
-        }
-    }
-
-    // Add scroll event listener
-    window.addEventListener('scroll', handleScroll);
-
-    // Trigger animations on page load if elements are already in view
-    handleScroll();
-
+    <script>
         // Toggle Chat Popup
         const chatButton = document.getElementById('chatButton');
         const chatPopup = document.getElementById('chatPopup');
@@ -249,18 +222,29 @@
             }
         });
 
-        // Scroll-Triggered Wave Animation
-        const waveElement = document.querySelector('.wave');
+        // Scroll-triggered animation for cards
+        const cardsSection = document.querySelector('.middle-section');
+        const cards = document.querySelectorAll('.cards-right .card');
 
-        window.addEventListener('scroll', () => {
-            const wavePosition = waveElement.getBoundingClientRect();
-            if (wavePosition.top < window.innerHeight && wavePosition.bottom >= 0) {
-                waveElement.classList.add('animate-on-scroll');
-            } else {
-                waveElement.classList.remove('animate-on-scroll');
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        cards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('in-view');
+                            }, index * 200); // Staggered delay for each card
+                        });
+                        observer.unobserve(entry.target); // Stop observing after animation
+                    }
+                });
+            },
+            {
+                threshold: 0.5, // Trigger when 50% of the section is in view
             }
-        });
-        
+        );
+
+        observer.observe(cardsSection);
     </script>
 </body>
 </html>
