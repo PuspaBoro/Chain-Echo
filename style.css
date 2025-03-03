@@ -4,7 +4,7 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #0a0a0a;
     color: white;
-    background-image: url('./13.webp'); /* Your background image */
+    background-image: url('./13.webp');
     background-size: cover;
     background-position: center;
     min-height: 6vh;
@@ -18,18 +18,12 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px 50px;
-    background: linear-gradient(100deg, #0e0120, #30023c);}
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    background-color:none;
+    background: linear-gradient(100deg, #0e0120, #30023c);
 }
 
-.logo img{
-    height:60px;
-    width:70px;
+.logo img {
+    height: 60px;
+    width: 70px;
 }
 
 .logo h1 {
@@ -41,7 +35,7 @@ header {
 
 /* Navigation Styles */
 nav {
-    margin-left: auto; /* Push nav to the right */
+    margin-left: auto;
 }
 
 nav ul {
@@ -61,7 +55,7 @@ nav ul li a {
     text-decoration: none;
     font-size: 16px;
     transition: color 0.3s;
-    cursor: pointer; /* Add cursor pointer for better UX */
+    cursor: pointer;
 }
 
 nav ul li a:hover {
@@ -86,7 +80,7 @@ nav ul li a:hover {
 .cta-buttons {
     display: flex;
     align-items: center;
-    margin-left: 20px; /* Add space between nav and buttons */
+    margin-left: 20px;
 }
 
 .btn-login, .btn-join {
@@ -128,12 +122,18 @@ nav ul li a:hover {
     font-size: 48px;
     font-weight: bold;
     margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out 0.2s forwards;
 }
 
 .hero p {
     font-size: 18px;
     margin-bottom: 30px;
     color: #f5ebeb;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out 0.4s forwards;
 }
 
 .hero .btn-join {
@@ -142,6 +142,9 @@ nav ul li a:hover {
     margin-bottom: 20px;
     border: 2px solid rgb(207, 26, 26);
     color: rgb(238, 231, 231);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out 0.6s forwards;
 }
 
 .hero .btn-join:hover {
@@ -166,13 +169,19 @@ nav ul li a:hover {
     font-size: 36px;
     font-weight: bold;
     margin-bottom: 20px;
-     color: #e51e60;
+    color: #e51e60;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out 0.2s forwards;
 }
 
 .content-left p {
     font-size: 18px;
     color: #cccccc;
     line-height: 1.6;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out 0.5s forwards;
 }
 
 .cards-right {
@@ -180,6 +189,17 @@ nav ul li a:hover {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     max-width: 50%;
+}
+/* Scroll-triggered animation for cards */
+.cards-right .card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.cards-right .card.in-view {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .card {
@@ -189,6 +209,25 @@ nav ul li a:hover {
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s, box-shadow 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.card:nth-child(1) {
+    animation-delay: 0.5s;
+}
+
+.card:nth-child(2) {
+    animation-delay: 0.75s;
+}
+
+.card:nth-child(3) {
+    animation-delay: 1s;
+}
+
+.card:nth-child(4) {
+    animation-delay: 1.25s;
 }
 
 .card:hover {
@@ -222,7 +261,7 @@ nav ul li a:hover {
 /* Third Section: ChainEcho Advantage */
 .advantage-section {
     padding: 100px 50px;
-    background: transparent; /* Transparent background */
+    background: transparent;
     position: relative;
     overflow: hidden;
 }
@@ -245,6 +284,14 @@ nav ul li a:hover {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.stats-container.animate {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .stat {
@@ -281,16 +328,14 @@ nav ul li a:hover {
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23000000" fill-opacity="1" d="M0,160L48,149.3C96,139,192,117,288,128C384,139,480,181,576,192C672,203,768,181,864,160C960,139,1056,117,1152,112C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
     background-size: cover;
     background-repeat: no-repeat;
-    animation: wave-animation 10s infinite linear;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-@keyframes wave-animation {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+.wave.animate {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Footer Styles */
@@ -350,7 +395,7 @@ nav ul li a:hover {
     text-decoration: none;
     font-size: 14px;
     transition: color 0.3s;
-    cursor: pointer; /* Add cursor pointer for better UX */
+    cursor: pointer;
 }
 
 .navigation .footer-links li a:hover {
@@ -590,4 +635,12 @@ nav ul li a:hover {
 
 .file-upload i:hover {
     color: #ff0000;
+}
+
+/* Fade-In Animation */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
