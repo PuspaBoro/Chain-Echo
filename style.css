@@ -190,6 +190,7 @@ nav ul li a:hover {
     gap: 20px;
     max-width: 50%;
 }
+
 /* Scroll-triggered animation for cards */
 .cards-right .card {
     opacity: 0;
@@ -642,5 +643,126 @@ nav ul li a:hover {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Responsive Design for Mobile Devices */
+@media (max-width: 768px) {
+    /* Header Adjustments */
+    header {
+        padding: 15px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logo h1 {
+        font-size: 30px;
+    }
+
+    nav {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .cta-buttons {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    /* Hero Section Adjustments */
+    .hero {
+        padding: 100px 20px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .hero .btn-join {
+        font-size: 16px;
+    }
+
+    /* Middle Section Adjustments */
+    .middle-section {
+        flex-direction: column;
+        padding: 50px 20px;
+    }
+
+    .content-left {
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .content-left h2 {
+        font-size: 28px;
+    }
+
+    .content-left p {
+        font-size: 16px;
+    }
+
+    .cards-right {
+        max-width: 100%;
+        grid-template-columns: 1fr;
+    }
+
+    /* Advantage Section Adjustments */
+    .advantage-section {
+        padding: 50px 20px;
+    }
+
+    .advantage-content h2 {
+        font-size: 28px;
+    }
+
+    .stats-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .stat-number {
+        font-size: 36px;
+    }
+
+    .stat-description {
+        font-size: 16px;
+    }
+
+    /* Footer Adjustments */
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-section {
+        min-width: 100%;
+    }
+
+    .subscription-form {
+        flex-direction: column;
+    }
+
+    .subscription-form button {
+        width: 100%;
+    }
+
+    /* Chat Popup Adjustments */
+    .chat-popup {
+        width: 90%;
+        right: 5%;
     }
 }
