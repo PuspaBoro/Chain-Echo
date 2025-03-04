@@ -14,10 +14,10 @@
             padding: 0;
             background-color: #000000;
             color: #ffffff;
-            background-image: url('./11.webp'); /* Add this line */
-            background-size: cover; /* Ensure the image covers the entire background */
-            background-position: center; /* Center the background image */
-            background-attachment: fixed; /* Fix the background image */
+            background-image: url('./11.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
         a {
@@ -35,11 +35,11 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 50px;
-            background-color:none;
+            background-color: none;
         }
 
         .logo img {
-            height: 60px; /* Adjusted logo size */
+            height: 60px;
         }
 
         nav ul {
@@ -143,12 +143,13 @@
             padding: 15px;
             border-radius: 10px;
             text-align: center;
-            width: 180px; /* Fixed width for compact size */
-            transition: transform 0.3s ease;
+            width: 180px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: slideIn 0.5s ease-out;
         }
 
         .profile-card:hover {
-            transform: scale(1.05); /* Hover effect */
+            transform: scale(1.05);
             box-shadow: 0 10px 20px rgba(20, 226, 240, 0.3);
         }
 
@@ -157,7 +158,12 @@
             height: 100px;
             border-radius: 50%;
             margin-bottom: 10px;
-            cursor: pointer; /* Indicates the image is clickable */
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.1);
         }
 
         .role {
@@ -174,10 +180,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8); /* Fixed rgba syntax */
+            background-color: rgba(0, 0, 0, 0.8);
             justify-content: center;
             align-items: center;
             z-index: 1000;
+            animation: fadeIn 0.3s ease-out;
         }
 
         .modal-content {
@@ -185,6 +192,7 @@
             padding: 20px;
             border-radius: 10px;
             text-align: center;
+            animation: zoomIn 0.3s ease-out;
         }
 
         .modal-content img {
@@ -198,6 +206,36 @@
             font-size: 24px;
             cursor: pointer;
             margin-top: 10px;
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+            }
+            to {
+                transform: scale(1);
+            }
         }
 
         /* Footer Styles */
@@ -257,7 +295,7 @@
             text-decoration: none;
             font-size: 14px;
             transition: color 0.3s;
-            cursor: pointer; /* Add cursor pointer for better UX */
+            cursor: pointer;
         }
 
         .navigation .footer-links li a:hover {
@@ -543,9 +581,9 @@
                     <option value="mentor">Mentor</option>
                 </select>
             </div>
-            <div class="profile-grid"> 
+            <div class="profile-grid">
                 <div class="profile-card">
-                    <img src="./asset/13.jpg" alt="Profile Picture" class="profile-pic" onclick="openModal('asset/13.jpg')">
+                    <img src="./asset/51.jpg" alt="Profile Picture" class="profile-pic" onclick="openModal('asset/51.jpg')">
                     <h2>Puspa Boro</h2>
                     <p class="role">Founder</p>
                 </div>
